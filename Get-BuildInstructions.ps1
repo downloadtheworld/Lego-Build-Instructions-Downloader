@@ -9,7 +9,7 @@ foreach ($file in $index){
     $url = $file.url
     $output = $outputfolder + $file.setnumber + '.pdf'
     if(!(Test-Path $output)){
-        Write-Host "Trying " $file.SetNumber - $file.Description " - " $file.Notes
+        Write-Host "Trying" $file.SetNumber - $file.Description " - " $file.Notes
         try{
             Invoke-WebRequest -Uri $url -OutFile $output
         } 
@@ -22,6 +22,6 @@ foreach ($file in $index){
             }
         }
     }else{
-        Write-Host -ForegroundColor Green $file.SetNumber " already exists, skipping"
+        Write-Host -ForegroundColor Green $file.SetNumber "already exists, skipping"
     }
 }
