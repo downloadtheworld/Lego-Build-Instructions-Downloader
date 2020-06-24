@@ -2,7 +2,7 @@ $url = "https://brickset.com/exportscripts/instructions"
 $outputfolder = "e:\lego\"
 $output = $outputfolder + 'index.csv'
 
-
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Invoke-WebRequest -Uri $url -OutFile $output
 $index = Import-Csv $output
 foreach ($file in $index){
