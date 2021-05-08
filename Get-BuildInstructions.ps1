@@ -6,7 +6,8 @@ $output = $outputfolder + 'index.csv'
 Invoke-WebRequest -Uri $url -OutFile $output
 $index = Import-Csv $output
 foreach ($file in $index){
-    $url = [uri]::EscapeUriString($file.url)
+    $url = [uri]::EscapeDataString($file.url)
+    $url = $url.Replace("%3A",":").Replace("%2F","/")
     $url
     $desc = $file.description.Split([IO.Path]::GetInvalidFileNameChars()) -join '_'
     $output = $outputfolder + $file.setnumber + ' ' + $desc +  '.pdf'
